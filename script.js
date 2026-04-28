@@ -41,6 +41,11 @@ class BalloonGame {
             10: { spawnRate: 300, fallSpeed: { min: 6.5, max: 8.5 }, timeBonus: 45 }
         };
 
+        // Initialize sounds
+        this.popSound = new Audio('pop.wav');
+        this.winSound = new Audio('win.wav');
+        this.gameOverSound = new Audio('gameover.wav');
+
         this.init();
     }
 
@@ -175,7 +180,10 @@ class BalloonGame {
         clearInterval(fallInterval);
         balloon.classList.add('popping');
 
-        // Play pop sound effect (visual feedback)
+        // Play pop sound effect
+        this.popSound.currentTime = 0; // Reset sound to beginning
+        this.popSound.play().catch(e => console.log('Audio play failed:', e));
+
         this.createPopEffect(balloon.offsetLeft + 30, balloon.offsetTop + 40);
 
         // Remove balloon after animation
@@ -301,6 +309,10 @@ class BalloonGame {
     }
 
     showLevelUpMessage(message) {
+        // Play win sound effect
+        this.winSound.currentTime = 0; // Reset sound to beginning
+        this.winSound.play().catch(e => console.log('Audio play failed:', e));
+
         const levelUpMsg = document.createElement('div');
         levelUpMsg.textContent = message;
         levelUpMsg.style.position = 'absolute';
@@ -333,6 +345,10 @@ class BalloonGame {
         this.gameRunning = false;
         clearInterval(this.balloonInterval);
         clearInterval(this.timerInterval);
+
+        // Play game over sound effect
+        this.gameOverSound.currentTime = 0; // Reset sound to beginning
+        this.gameOverSound.play().catch(e => console.log('Audio play failed:', e));
 
         this.finalScoreElement.textContent = this.score;
         this.gameOverElement.style.display = 'block';
