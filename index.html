@@ -1,12 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>משחק בלונים - Balloon Pop Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>ברוכים הבאים למשחק הבלונים</h1>
-<h2>לפוצץ בלונים כדי לעלות לשלב הבא</h2>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>🎈 משחק בלונים 🎈</h1>
+            <div class="score-display">
+                <span id="score">0</span>
+                <span class="score-label">נקודות</span>
+            </div>
+            <div class="level-display">
+                <span id="level">1</span>
+                <span class="level-label">שלב</span>
+            </div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <div class="background" id="background"></div>
+            <div class="crosshair" id="crosshair">🎯</div>
+        </div>
+
+        <div class="game-controls">
+            <button class="start-btn" id="startBtn">🚀 התחל משחק</button>
+            <button class="pause-btn" id="pauseBtn" style="display: none;">⏸️ השהה</button>
+            <button class="reset-btn" id="resetBtn">🔄 התחל מחדש</button>
+        </div>
+
+        <div class="game-info">
+            <div class="lives">
+                <span>חיים:</span>
+                <div class="hearts" id="hearts">
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                </div>
+            </div>
+            <div class="time">
+                <span>זמן:</span>
+                <span id="timer">60</span>
+            </div>
+        </div>
+
+        <div class="game-over" id="gameOver" style="display: none;">
+            <h2>🎉 משחק נגמר! 🎉</h2>
+            <p>הניקוד הסופי שלך: <span id="finalScore">0</span></p>
+            <button class="play-again-btn" id="playAgainBtn">🎮 שחק שוב</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
